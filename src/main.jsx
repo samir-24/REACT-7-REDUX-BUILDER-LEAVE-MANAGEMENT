@@ -1,12 +1,8 @@
-// 1. Pehla React na imports
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
-// 2. Pachhi Redux na imports
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux'
 import { store } from './app/store'
-
-// 3. Pachhi tamara components
 import Dashboard from './pages/Dashboard'
 import './index.css'
 

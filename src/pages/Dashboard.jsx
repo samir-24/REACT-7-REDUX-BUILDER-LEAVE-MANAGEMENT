@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchLeaves } from '../features/leaveSlice';
+import { Container, Row, Col, Navbar } from 'react-bootstrap';
 import AddLeave from '../components/AddLeave';
 import LeaveList from '../components/LeaveList';
 import SearchFilter from '../components/SearchFilter';
@@ -10,33 +11,31 @@ const Dashboard = () => {
   useEffect(() => { dispatch(fetchLeaves()); }, [dispatch]);
 
   return (
-    <div className="min-h-screen bg-slate-50 p-6 md:p-12">
-      <div className="max-w-6xl mx-auto">
-        <header className="mb-10 text-center md:text-left">
-          <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">
-            Leave Management <span className="text-indigo-600">Portal</span>
-          </h1>
-          <p className="text-slate-500 mt-2 text-lg">Manage employee leaves and track records efficiently.</p>
-        </header>
+    <>
+      <Navbar bg="white" className="shadow-sm mb-5 py-3">
+        <Container>
+          <Navbar.Brand className="font-weight-bold text-primary" style={{fontSize: '1.5rem'}}>
+             Smart Leave <span className="text-dark">System</span>
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Side: Form */}
-          <div className="lg:col-span-4 sticky top-10">
+      <Container>
+        <Row className="g-4">
+          <Col lg={4}>
             <AddLeave />
-          </div>
-
-          {/* Right Side: Search and List */}
-          <div className="lg:col-span-8">
-            <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+          </Col>
+          <Col lg={8}>
+            <div className="bg-white p-4 rounded-3 shadow-sm border">
               <SearchFilter />
-              <div className="mt-6">
-                <LeaveList />
-              </div>
+              <hr className="my-4 text-muted" />
+              <LeaveList />
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
+
 export default Dashboard;
